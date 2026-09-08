@@ -1,26 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Movie List</title>
-</head>
-<body>
-    <h1>My Movie List</h1>
-    <p>Prepared by: Jayvy P. Magdaraog</p>
- 
-    <table border="1" cellpadding="8">
-        <tr>
-            <th>Title</th>
-            <th>Genre</th>
-            <th>Rating</th>
-        </tr>
- 
-        @foreach ($movies as $movie)
+@extends('layouts.app')
+
+@section('title', 'Movie List')
+
+@section('content')
+    <h2>All Movies</h2>
+
+    <table class="table table-striped table-bordered">
+        <thead>
             <tr>
-                <td>{{ $movie['title'] }}</td>
-                <td>{{ $movie['genre'] }}</td>
-                <td>{{ $movie['rating'] }}</td>
+                <th>#</th>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Rating</th>
+                <th>Year</th>
             </tr>
-        @endforeach
+        </thead>
+        <tbody>
+            @forelse ($movies as $movie)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>
+                        <a href="{{ route('movies.show', $movie['id']) }}">{{ $movie['title'] }}</a>
+                    </td>
+                    <td>{{ $movie['genre'] }}</td>
+                    <td>{{ $movie['rating'] }}</td>
+                    <td>
+                        {{ $movie['year'] }}
+                        @if ($movie['year'] >= 2020)
+                            <span class="badge bg-primary">New Release</span>
+                        @else
+                            <span class="badge bg-secondary">Classic</span>
+                        @endif
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="5">No movies found yet. Add one to get started.</td>
+                </tr>
+            @endforelse
+        </tbody>
     </table>
-</body>
-</html>
+@endsection

@@ -34,6 +34,7 @@ class MoviesController extends Controller
             3 => ['id' => 3, 'title' => 'Interstellar', 'genre' => 'Sci-Fi / Drama', 'rating' => 8.7, 'year' => 2014],
             4 => ['id' => 4, 'title' => 'Parasite', 'genre' => 'Thriller / Drama', 'rating' => 8.5, 'year' => 2019],
             5 => ['id' => 5, 'title' => 'Avengers: Endgame', 'genre' => 'Action / Superhero', 'rating' => 8.4, 'year' => 2019],
+            6 => ['id' => 6, 'title' => 'The Matrix', 'genre' => 'Sci-Fi / Action', 'rating' => 8.7, 'year' => 1999],
         ];
     }
 }

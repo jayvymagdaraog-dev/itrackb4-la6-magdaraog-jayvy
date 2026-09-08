@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $movie['title'] }}</title>
-</head>
-<body>
-    <h1>{{ $movie['title'] }}</h1>
+@extends('layouts.app')
 
-    <p>Genre: {{ $movie['genre'] }}</p>
-    <p>Rating: {{ $movie['rating'] }}</p>
-    <p>Year: {{ $movie['year'] }}</p>
-    <p>Prepared by: Jayvy P. Magdaraog</p>
+@section('title', $movie['title'])
 
-    <a href="{{ route('movies.index') }}">Back to movie list</a>
-</body>
-</html>
+@section('content')
+     <div class="card">
+        <div class="card-body">
+            <h2 class="card-title"> {{ $movie['title'] }} </h2>
+                <p class="card-text">Genre: {{ $movie['genre'] }}</p>
+                <p class="card-text">Rating: {{ $movie['rating'] }}</p>
+                <p class="card-text">Year: {{ $movie['year'] }}</p>
+                <p class="card-text">Prepared by: Jayvy P. Magdaraog</p>
+     <a href="{{ route('movies.index') }}" class="btn btn-dark">Back to list</a>
+    </div>
+</div>
+@endsection
