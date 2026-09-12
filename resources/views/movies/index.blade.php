@@ -20,7 +20,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>
-                        <a href="{{ route('movies.show', $movie['id']) }}">{{ $movie['title'] }}</a>
+                        <a href="{{ route('movies.show', ['movie' => $movie['id']]) }}">{{ $movie['title'] }}</a>
                     </td>
                     <td>{{ $movie['genre'] }}</td>
                     <td>{{ $movie['rating'] }}</td>
