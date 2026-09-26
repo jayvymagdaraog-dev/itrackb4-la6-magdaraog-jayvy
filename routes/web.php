@@ -13,6 +13,8 @@ Route::get('/whoami', function () {
 
 Route::get('/movies/featured', [MovieController::class, 'featured'])->name('movies.featured');
 
-Route::get('/movies/filter/{year?}', [MovieController::class, 'filter'])->name('movies.filter');
+Route::get('/movies/filter/{year?}', function ($year = null) {
+    return redirect()->route('movies.index', $year ? ['year' => $year] : []);
+});
 
 Route::resource('movies', MovieController::class)->only(['index', 'show']);

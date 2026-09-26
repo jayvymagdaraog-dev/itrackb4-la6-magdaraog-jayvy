@@ -9,11 +9,28 @@ class MovieController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        return view('movies.index', ['movies' => $this->movies()]);
+    public function index(Request $request)
+{
+    $genre = $request->query('genre', 'all');
+    $year = $request->query('year', 'all');
+
+    $movies = $this->movies();
+
+    if ($genre !== 'all') {
+        $movies = array_filter($movies, fn($m) => str_contains($m['genre'], $genre));
     }
 
+    if ($year !== 'all') {
+        $movies = array_filter($movies, fn($m) => $m['year'] === (int) $year);
+    }
+
+    return view('movies.index', [
+        'movies' => $movies,
+        'genre' => $genre,
+        'year' => $year,
+    ]);
+}
+    
     /**
      * Show the form for creating a new resource.
      */

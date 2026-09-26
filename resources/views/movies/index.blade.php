@@ -5,6 +5,25 @@
 @section('content')
     <h2>All Movies</h2>
 
+    <p>
+        Genre:
+        <a href="{{ route('movies.index', ['genre' => 'all', 'year' => $year]) }}">All</a>
+        <a href="{{ route('movies.index', ['genre' => 'Action', 'year' => $year]) }}">Action</a>
+    </p>
+
+    <p>
+        Year:
+        <a href="{{ route('movies.index', ['genre' => $genre, 'year' => 'all']) }}">All</a>
+        <a href="{{ route('movies.index', ['genre' => $genre, 'year' => 2019]) }}">2019</a>
+    </p>
+
+    <a href="{{ route('movies.index') }}">Clear filters</a>
+
+    <p>
+        Showing:
+        genre = {{ $genre }}, year = {{ $year }}
+    </p>
+
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
